@@ -1,16 +1,33 @@
 import { config } from './config';
 
-export const searchUser = async (username) =>{
+export const searchUsers = async (username) =>{
     try {
-        const response = await fetch(`${config.base_url}/search?search=${username}`,{
-            headers:{
-                'X-RapidAPI-Key':config.key_api,
-                'X-RapidAPI-Host':config.api_host
-            }
-        });
+        const response = await fetch(`${config.base_url}/search/users?q=${username}`);
+
         const data = await response.json();
         return data;
     } catch(error){
         console.log(error);
     }
+}
+
+export const searchUser = async (username) =>{
+    try {
+        const response = await fetch(`${config.base_url}/users/${username}`);
+        return response.json();
+    } catch(error){
+        console.log(error);
+    }
+}
+
+export const getRepos = async (username) =>{
+    try{
+        const response = await fetch(`${config.base_url}/users/${username}/repos?sort=created`);
+        
+        const data = await response.json();
+        return data;
+    }catch(error){
+        return error;
+    }
+    
 }

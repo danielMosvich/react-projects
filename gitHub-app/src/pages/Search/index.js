@@ -27,13 +27,13 @@ const Search = () => {
             >
                 <Grid item xs={12}>
                     <TextField  
-                    label={'Buscar usuario'} 
+                    label={'Buscar usuario de GitHub'} 
                     value={username} 
                     onChange={handleInputChange}
                     fullWidth/>
                 </Grid>
                 <Grid item xs={12}>
-                    <Link to={`/user/${username}`} style={{
+                    <Link to={`/users/${username}`} style={{
                         textDecoration:'none',
                     }}>
                         <Button
